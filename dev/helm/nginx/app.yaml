@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx
+  name: mongodb
   namespace: argocd
 spec:
   project: default
   source:
-    chart: nginx
-    repoURL: registry-1.docker.io/bitnamicharts
-    targetRevision: 15.9.0
+    chart: bitnami/mongodb
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 16.4.0
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: backend
