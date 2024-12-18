@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: microservice1-backend
+  name: microservice4-backend
   namespace: backend
   labels:
-    app: microservice1-backend
+    app: microservice4-backend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: microservice1-backend
+      app: microservice4-backend
   template:
     metadata:
       labels:
-        app: microservice1-backend
+        app: microservice4-backend
     spec:
       containers:
       - name: nginx
