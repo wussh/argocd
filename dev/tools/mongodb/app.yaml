@@ -16,11 +16,10 @@ spec:
     namespace: tools
     server: https://kubernetes.default.svc
   source:
-    path: ''
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 16.4.0
     chart: mongodb
     helm:
       releaseName: mongodb
-      valuesObject:
+      values:
         useStatefulSet: true
