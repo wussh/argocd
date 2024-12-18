@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/wussh/argocd.git'
     targetRevision: master
-    path: project-a/backend/microservice2
+    path: dev/project-a/backend/microservice2
   destination:
     server: https://kubernetes.default.svc
     namespace: microservice2
