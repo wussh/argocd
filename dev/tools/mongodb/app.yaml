@@ -3,11 +3,23 @@ kind: Application
 metadata:
   name: nginx
 spec:
+  sources: []
   project: default
-  source:
-    chart: nginx
-    repoURL: registry-1.docker.io/bitnamicharts
-    targetRevision: 15.9.0
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
   destination:
-    name: "in-cluster"
-    namespace: nginx
+    name: ''
+    namespace: tools
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 18.2.4
+    chart: nginx
+    helm:
+      releaseName: nginx
+      valuesObject:
+        image: 1.27.3-debian-12-r0
