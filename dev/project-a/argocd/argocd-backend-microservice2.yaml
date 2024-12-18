@@ -6,7 +6,7 @@ metadata:
 spec:
   project: project-a
   source:
-    repoURL: 'https://github.com/wussh/microservice2.git'
+    repoURL: 'https://github.com/wussh/argocd.git'
     targetRevision: master
     path: backend/microservice2
   destination:
