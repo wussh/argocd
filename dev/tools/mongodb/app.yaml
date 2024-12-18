@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mongodb
+  name: nginx
 spec:
   sources: []
   project: default
@@ -17,9 +17,9 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 16.4.0
-    chart: mongodb
+    targetRevision: 18.3.1
+    chart: nginx
     helm:
-      releaseName: mongodb
+      releaseName: nginx
       valuesObject:
-        useStatefulSet: true
+        image: 1.27.3-debian-12-r0
