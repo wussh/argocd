@@ -7,7 +7,7 @@ spec:
   project: project-a
   source:
     repoURL: 'https://github.com/wussh/microservice2.git'
-    targetRevision: main
+    targetRevision: master
     path: backend/microservice2
   destination:
     server: https://kubernetes.default.svc
