@@ -4,12 +4,9 @@ metadata:
   name: project-a
   namespace: argocd
 spec:
-  description: Argo CD project for managing microservices in Project A
-  sourceRepos:
-    - '*'
+  description: "Project for microservices"
   destinations:
-    - namespace: project-a
-      server: https://kubernetes.default.svc
-  clusterResourceWhitelist:
-    - group: "*"
-      kind: "*"
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
