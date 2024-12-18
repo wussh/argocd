@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: project-a
+  namespace: argocd
+spec:
+  description: Argo CD project for managing microservices in Project A
+  sourceRepos:
+    - '*'
+  destinations:
+    - namespace: project-a
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"

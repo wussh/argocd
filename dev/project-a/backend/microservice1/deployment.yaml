@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice1-backend
+  labels:
+    app: microservice1-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: microservice1-backend
+  template:
+    metadata:
+      labels:
+        app: microservice1-backend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.25-alpine # Image dapat diupdate sesuai kebutuhan
+        ports:
+        - containerPort: 80
