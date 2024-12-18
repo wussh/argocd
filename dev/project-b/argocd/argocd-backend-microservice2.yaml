@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backend-microservice2
+  namespace: argocd
+spec:
+  project: project-b
+  source:
+    repoURL: 'https://github.com/wussh/argocd.git'
+    targetRevision: master
+    path: dev/project-b/backend/microservice2
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: microservice2
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
