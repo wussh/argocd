@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: nginx
+    version: 18.2.4
+    targetRevision: main
+  destination:
+    namespace: backend
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
