@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rabbitmq
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: rabbitmq
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 20.2.1
+    helm:
+      valuesObject:
+        replicaCount: 3
+        auth:
+          username: guest
+          password: "guest"
+        clustering:
+          enabled: true
+          forceBoot: false
+        communityPlugins: "https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v4.0.2/rabbitmq_delayed_message_exchange-4.0.2.ez"
+        extraPlugins: "rabbitmq_auth_backend_ldap rabbitmq_delayed_message_exchange"
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: backend
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
