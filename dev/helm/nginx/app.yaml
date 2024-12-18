@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx
+  namespace: argocd
 spec:
   project: default
   source:
@@ -9,5 +10,9 @@ spec:
     repoURL: registry-1.docker.io/bitnamicharts
     targetRevision: 15.9.0
   destination:
-    name: "in-cluster"
-    namespace: backend
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
