@@ -1,0 +1,24 @@
+global:
+  domain: argocd.wush.site
+
+configs:
+  params:
+    server.insecure: true
+
+server:
+  service:
+    type: LoadBalancer
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+      kubernetes.io/ingress.class: "nginx"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      cert-manager.io/acme-challenge-type: "http01"
+      acme.cert-manager.io/http01-edit-in-place: "true"
+    tls:
+      - hosts:
+        - argocd.wush.site
+        secretName: argocd-tls

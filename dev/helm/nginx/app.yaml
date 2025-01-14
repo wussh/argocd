@@ -1,3 +1,5 @@
+#beforeinstall
+#kubectl apply -f https://raw.githubusercontent.com/nginxinc/kubernetes-ingress/v4.0.0/deploy/crds.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -9,6 +11,13 @@ spec:
     chart: nginx-ingress
     repoURL: https://helm.nginx.com/stable
     targetRevision: 2.0.0
+    helm:
+      valuesObject:
+        controller:
+        enableCertManager: true
+        enableExternalDNS: true
+        ingressClass:
+          setAsDefaultIngress: true
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: internal
