@@ -1,0 +1,9 @@
+controller:
+  enabled: true
+  electionID: "nginx-ingress-leader-election"
+  service:
+    type: LoadBalancer
+enableCertManager: true
+enableExternalDNS: true
+ingressClass:
+  setAsDefaultIngress: true
