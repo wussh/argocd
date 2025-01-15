@@ -13,7 +13,7 @@ spec:
       valuesObject:
         provider: cloudflare
         cloudflare: 
-          apiToken: "Wgd4SflGUTe8njPc9SA507OcxJlnOUruzdSNpbIC"
+          apiToken: "jE-ZtHnaL0tJElF-4aMgDSems7x48G6Izlw8hVLA"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: internal
