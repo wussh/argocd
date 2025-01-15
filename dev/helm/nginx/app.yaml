@@ -15,7 +15,7 @@ spec:
       valuesObject:
         controller:
           enabled: true
-            electionID: "nginx-ingress-leader-election"
+          electionID: "nginx-ingress-leader-election"
           service:
             type: LoadBalancer
         enableCertManager: true
