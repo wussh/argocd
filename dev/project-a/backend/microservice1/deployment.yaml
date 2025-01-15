@@ -20,3 +20,42 @@ spec:
         image: nginx:1.25-alpine
         ports:
         - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microservice1-backend
+  namespace: backend
+spec:
+  selector:
+    app: microservice1-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microservice1-backend-ingress
+  namespace: backend
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/hostname: demo.wush.site
+spec:
+  tls:
+    - hosts:
+        - demo.wush.site
+      secretName: microservice1-tls-cert
+  rules:
+    - host: microservice1.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: microservice1-backend
+                port:
+                  number: 80

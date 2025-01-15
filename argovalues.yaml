@@ -6,8 +6,6 @@ configs:
     server.insecure: true
 
 server:
-  service:
-    type: LoadBalancer
   ingress:
     enabled: true
     ingressClassName: nginx
