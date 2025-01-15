@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.25-alpine # Image dapat diupdate sesuai kebutuhan
+        image: nginx:1.25-alpine
         ports:
         - containerPort: 80
