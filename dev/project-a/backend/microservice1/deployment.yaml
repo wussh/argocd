@@ -41,7 +41,6 @@ metadata:
   name: microservice1-backend-ingress
   namespace: backend
   annotations:
-    kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: letsencrypt-prod
     external-dns.alpha.kubernetes.io/hostname: demo.wush.site
 spec:
