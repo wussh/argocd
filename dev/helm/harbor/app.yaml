@@ -13,8 +13,9 @@ spec:
       valuesObject:
         expose:
           type: ingress
-          tls: true
-          certSource: auto
+          tls:
+            enabled: true
+            certSource: auto
         ingress:
           hosts:
             core: repository.wush.site
