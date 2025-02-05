@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    chart: harbor
+    chart: bitnami/harbor
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 24.3.0
     helm:
