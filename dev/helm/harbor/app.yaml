@@ -26,6 +26,7 @@ spec:
             kubernetes.io/ingress.class: nginx
             cert-manager.io/cluster-issuer: letsencrypt-prod
             external-dns.alpha.kubernetes.io/hostname: container.wush.site
+          externalURL: container.wush.site
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: backend
