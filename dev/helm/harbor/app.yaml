@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     chart: harbor
-    repoURL: https://charts.bitnami.com/bitnami
+    repoURL: registry-1.docker.io/bitnamicharts
     targetRevision: "24.3.0"
     helm:
       valuesObject:
