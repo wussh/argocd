@@ -25,16 +25,14 @@ spec:
             controller: default
             className: "nginx"
             annotations:
-              ingress.kubernetes.io/ssl-redirect: "true"
-              ingress.kubernetes.io/proxy-body-size: "0"
               nginx.ingress.kubernetes.io/ssl-redirect: "true"
-              nginx.ingress.kubernetes.io/proxy-body-size: "2G"
+              nginx.ingress.kubernetes.io/proxy-body-size: "0"
               nginx.ingress.kubernetes.io/client-max-body-size: "0"
-              nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-              kubernetes.io/ingress.class: nginx
               cert-manager.io/cluster-issuer: letsencrypt-prod
               external-dns.alpha.kubernetes.io/hostname: container.wush.site
         registry:
+          tls:
+            enabled: false
           relativeurls: true
   destination:
     server: 'https://kubernetes.default.svc'
