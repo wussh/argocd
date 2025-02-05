@@ -26,7 +26,7 @@ spec:
             className: "nginx"
             annotations:
               nginx.ingress.kubernetes.io/ssl-redirect: "true"
-              nginx.ingress.kubernetes.io/proxy-body-size: "0"
+              nginx.ingress.kubernetes.io/proxy-body-size: "1024m"
               nginx.ingress.kubernetes.io/client-max-body-size: "0"
               cert-manager.io/cluster-issuer: letsencrypt-prod
               external-dns.alpha.kubernetes.io/hostname: container.wush.site
