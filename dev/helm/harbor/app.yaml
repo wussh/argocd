@@ -12,7 +12,7 @@ spec:
     helm:
       valuesObject:
         expose:
-          type: ingress
+          type: loadBalancer
           tls:
             enabled: true
             certSource: secret
