@@ -18,9 +18,8 @@ spec:
             certSource: secret
             secret:
               secretName: harbor-tls
+        expose.ingress.hosts.core: container.wush.site
           ingress:
-            hosts:
-              core: container.wush.site
             controller: default
             className: "nginx"
           annotations:
