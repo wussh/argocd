@@ -30,6 +30,7 @@ spec:
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
           cert-manager.io/acme-challenge-type: "http01"
           acme.cert-manager.io/http01-edit-in-place: "true"
+          external-dns.alpha.kubernetes.io/hostname: repository.wush.site
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: backend
