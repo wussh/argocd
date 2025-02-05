@@ -1,0 +1,61 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    external-dns.alpha.kubernetes.io/hostname: container.wush.site
+    ingress.kubernetes.io/proxy-body-size: "0"
+    ingress.kubernetes.io/client-max-body-size: "0"
+    ingress.kubernetes.io/ssl-redirect: "true"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"cert-manager.io/cluster-issuer":"letsencrypt-prod","external-dns.alpha.kubernetes.io/hostname":"container.wush.site","ingress.kubernetes.io/proxy-body-size":"0","ingress.kubernetes.io/ssl-redirect":"true","nginx.ingress.kubernetes.io/client-max-body-size":"0","nginx.ingress.kubernetes.io/proxy-body-size":"1024m","nginx.ingress.kubernetes.io/ssl-redirect":"true"},"labels":{"app":"harbor","app.kubernetes.io/instance":"harbor","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"harbor","app.kubernetes.io/part-of":"harbor","app.kubernetes.io/version":"2.12.2","argocd.argoproj.io/instance":"harbor","chart":"harbor","heritage":"Helm","release":"harbor"},"name":"harbor-ingress","namespace":"backend"},"spec":{"ingressClassName":"nginx","rules":[{"host":"container.wush.site","http":{"paths":[{"backend":{"service":{"name":"harbor-core","port":{"number":80}}},"path":"/api/","pathType":"Prefix"},{"backend":{"service":{"name":"harbor-core","port":{"number":80}}},"path":"/service/","pathType":"Prefix"},{"backend":{"service":{"name":"harbor-core","port":{"number":80}}},"path":"/v2/","pathType":"Prefix"},{"backend":{"service":{"name":"harbor-core","port":{"number":80}}},"path":"/c/","pathType":"Prefix"},{"backend":{"service":{"name":"harbor-portal","port":{"number":80}}},"path":"/","pathType":"Prefix"}]}}],"tls":[{"hosts":["container.wush.site"],"secretName":"harbor-tls"}]}}
+    nginx.ingress.kubernetes.io/client-max-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  name: harbor-ingress
+  namespace: backend
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: container.wush.site
+    http:
+      paths:
+      - backend:
+          service:
+            name: harbor-core
+            port:
+              number: 80
+        path: /api/
+        pathType: Prefix
+      - backend:
+          service:
+            name: harbor-core
+            port:
+              number: 80
+        path: /service/
+        pathType: Prefix
+      - backend:
+          service:
+            name: harbor-core
+            port:
+              number: 80
+        path: /v2/
+        pathType: Prefix
+      - backend:
+          service:
+            name: harbor-core
+            port:
+              number: 80
+        path: /c/
+        pathType: Prefix
+      - backend:
+          service:
+            name: harbor-portal
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - container.wush.site
+    secretName: harbor-tls
