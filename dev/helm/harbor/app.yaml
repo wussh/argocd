@@ -31,7 +31,14 @@ spec:
             tls: true
         registry:
           relativeurls: true
-        registry.server.resourcesPreset: "small"
+          server:
+            resources:
+              requests:
+                cpu: "250m"
+                memory: "512Mi"
+              limits:
+                cpu: "500m"
+                memory: "768Mi"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: backend
