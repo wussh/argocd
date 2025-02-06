@@ -19,13 +19,6 @@ spec:
             cert-manager.io/cluster-issuer: letsencrypt-prod
             external-dns.alpha.kubernetes.io/hostname: search.wush.site
             nginx.ingress.kubernetes.io/ssl-redirect: "false"
-            nginx.ingress.kubernetes.io/server-snippet: |
-              location /.well-known/acme-challenge/ {
-                default_type "text/plain";
-                root /tmp;
-                allow all;
-                auth_basic off;
-              }
           tls: true
           extraTls:
             - secretName: elasticsearch-tls
