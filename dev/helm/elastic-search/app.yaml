@@ -14,10 +14,10 @@ spec:
         ingress:
           enabled: true
           ingressClassName: "nginx"
-          hostname: elasticsearch.wush.site
+          hostname: search.wush.site
           annotations:
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
-            external-dns.alpha.kubernetes.io/hostname: "elasticsearch.wush.site"
+            external-dns.alpha.kubernetes.io/hostname: "search.wush.site"
             nginx.ingress.kubernetes.io/ssl-redirect: "false"
             nginx.ingress.kubernetes.io/server-snippet: |
               location /.well-known/acme-challenge/ {
@@ -27,7 +27,7 @@ spec:
           extraTls:
             - secretName: elasticsearch-tls
               hosts:
-                - elasticsearch.wush.site
+                - search.wush.site
   destination:
     server: "https://kubernetes.default.svc"
     namespace: backend
