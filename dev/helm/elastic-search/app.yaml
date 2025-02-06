@@ -17,10 +17,11 @@ spec:
           hostname: search.wush.site
           annotations:
             acme.cert-manager.io/http01-edit-in-place: "true"
+            acme.cert-manager.io/http01-ingress-class: "nginx"
             cert-manager.io/cluster-issuer: letsencrypt-prod
             external-dns.alpha.kubernetes.io/hostname: search.wush.site
             nginx.ingress.kubernetes.io/ssl-redirect: "false"
-          tls: true
+          tls: false
           extraTls:
             - secretName: elasticsearch-tls
               hosts:
