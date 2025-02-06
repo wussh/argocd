@@ -16,6 +16,7 @@ spec:
           ingressClassName: "nginx"
           hostname: search.wush.site
           annotations:
+            acme.cert-manager.io/http01-edit-in-place: "true"
             cert-manager.io/cluster-issuer: letsencrypt-prod
             external-dns.alpha.kubernetes.io/hostname: search.wush.site
             nginx.ingress.kubernetes.io/ssl-redirect: "false"
