@@ -21,7 +21,10 @@ spec:
             nginx.ingress.kubernetes.io/ssl-redirect: "false"
             nginx.ingress.kubernetes.io/server-snippet: |
               location /.well-known/acme-challenge/ {
+                default_type "text/plain";
+                root /tmp;
                 allow all;
+                auth_basic off;
               }
           tls: true
           extraTls:
