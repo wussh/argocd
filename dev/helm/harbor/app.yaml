@@ -32,7 +32,7 @@ spec:
                 location /.well-known/acme-challenge/ {
                   allow all;
                 }
-            tls: true
+            tls: false
         registry:
             relativeurls: true
   destination:
