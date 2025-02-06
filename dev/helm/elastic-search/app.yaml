@@ -13,16 +13,15 @@ spec:
       valuesObject:
         ingress:
           enabled: true
-          hostname: elastic.wush.site
+          hostname: elasticsearch.wush.site
           annotations:
             kubernetes.io/ingress.class: nginx
             cert-manager.io/cluster-issuer: letsencrypt-prod
-            external-dns.alpha.kubernetes.io/hostname: elastic.wush.site
-          tls: false
-          extraTls:
-            - hosts:
-                - elastic.wush.site
-              secretName: elasticsearch-tls
+            external-dns.alpha.kubernetes.io/hostname: elasticsearch.wush.site
+            tls:
+              - secretName: elasticsearch-tls
+                hosts:
+                  - elasticsearch.wush.site
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: backend
