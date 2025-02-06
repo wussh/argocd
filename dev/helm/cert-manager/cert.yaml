@@ -9,5 +9,5 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-  - "*.wush.site"
-  - "wush.site"
+    - "*.wush.site"
+    - "wush.site"
