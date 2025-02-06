@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     chart: elasticsearch
-    repoURL: registry-1.docker.io/bitnamicharts/elasticsearch
+    repoURL: registry-1.docker.io/bitnamicharts
     targetRevision: 21.4.4
     helm:
       valuesObject:
