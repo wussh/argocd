@@ -32,9 +32,12 @@ spec:
                 location /.well-known/acme-challenge/ {
                   allow all;
                 }
-            tls: false
+            tls:
+              - secretName: harbor-tls
+                hosts:
+                  - container.wush.site
         registry:
-            relativeurls: true
+          relativeurls: true
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: backend
