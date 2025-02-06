@@ -28,6 +28,10 @@ spec:
               nginx.ingress.kubernetes.io/client-max-body-size: "0"
               cert-manager.io/cluster-issuer: letsencrypt-prod
               external-dns.alpha.kubernetes.io/hostname: container.wush.site
+              nginx.ingress.kubernetes.io/server-snippet: |
+                location /.well-known/acme-challenge/ {
+                  allow all;
+                }
             tls: true
         registry:
             relativeurls: true
