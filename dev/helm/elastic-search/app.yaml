@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elasticsearch
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: elasticsearch
+    repoURL: registry-1.docker.io/bitnamicharts/elasticsearch
+    targetRevision: 21.4.4
+    helm:
+      valuesObject:
+        ingress:
+          enabled: true
+          hostname: elastic.wush.site
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+            external-dns.alpha.kubernetes.io/hostname: elastic.wush.site
+          tls: true
+          extraTls:
+            - hosts:
+                - elastic.wush.site
+              secretName: elasticsearch-tls
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: backend
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
