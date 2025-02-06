@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: elasticsearch-search
+  name: elasticsearch
   namespace: argocd
 spec:
   project: default
