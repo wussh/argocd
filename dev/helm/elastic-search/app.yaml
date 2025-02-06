@@ -13,9 +13,9 @@ spec:
       valuesObject:
         ingress:
           enabled: true
+          ingressClassName: "nginx"
           hostname: elasticsearch.wush.site
           annotations:
-            kubernetes.io/ingress.class: "nginx"
             cert-manager.io/cluster-issuer: "letsencrypt-prod"
             external-dns.alpha.kubernetes.io/hostname: "elasticsearch.wush.site"
             nginx.ingress.kubernetes.io/server-snippet: |
