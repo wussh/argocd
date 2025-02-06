@@ -1,51 +1,51 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: elasticsearch
-  namespace: argocd
-spec:
-  project: default
-  source:
-    chart: elasticsearch
-    repoURL: registry-1.docker.io/bitnamicharts
-    targetRevision: 21.4.4
-    helm:
-      valuesObject:
-        ingress:
-          enabled: true
-          ingressClassName: "nginx"
-          hostname: search.wush.site
-          annotations:
-            cert-manager.io/cluster-issuer: letsencrypt-prod
-            external-dns.alpha.kubernetes.io/hostname: search.wush.site
-            nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-            nginx.ingress.kubernetes.io/ssl-redirect: "true"
-          tls: true
-          extraTls:
-            - secretName: wildcard-wush-site-tls
-              hosts:
-                - search.wush.site
-        resources:
-          requests:
-            cpu: "500m"
-            memory: "1Gi"
-          limits:
-            cpu: "1000m"
-            memory: "2Gi"
-        affinity:
-          podAntiAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              - labelSelector:
-                  matchExpressions:
-                    - key: app
-                      operator: In
-                      values:
-                        - elasticsearch
-                topologyKey: "kubernetes.io/hostname"
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: backend
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: elasticsearch
+#   namespace: argocd
+# spec:
+#   project: default
+#   source:
+#     chart: elasticsearch
+#     repoURL: registry-1.docker.io/bitnamicharts
+#     targetRevision: 21.4.4
+#     helm:
+#       valuesObject:
+#         ingress:
+#           enabled: true
+#           ingressClassName: "nginx"
+#           hostname: search.wush.site
+#           annotations:
+#             cert-manager.io/cluster-issuer: letsencrypt-prod
+#             external-dns.alpha.kubernetes.io/hostname: search.wush.site
+#             nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+#             nginx.ingress.kubernetes.io/ssl-redirect: "true"
+#           tls: true
+#           extraTls:
+#             - secretName: wildcard-wush-site-tls
+#               hosts:
+#                 - search.wush.site
+#         resources:
+#           requests:
+#             cpu: "500m"
+#             memory: "1Gi"
+#           limits:
+#             cpu: "1000m"
+#             memory: "2Gi"
+#         affinity:
+#           podAntiAffinity:
+#             requiredDuringSchedulingIgnoredDuringExecution:
+#               - labelSelector:
+#                   matchExpressions:
+#                     - key: app
+#                       operator: In
+#                       values:
+#                         - elasticsearch
+#                 topologyKey: "kubernetes.io/hostname"
+#   destination:
+#     server: "https://kubernetes.default.svc"
+#     namespace: backend
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
