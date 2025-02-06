@@ -1,44 +1,44 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: harbor
-#   namespace: argocd
-# spec:
-#   project: default
-#   source:
-#     chart: harbor
-#     repoURL: registry-1.docker.io/bitnamicharts
-#     targetRevision: 24.3.0
-#     helm:
-#       valuesObject:
-#         adminPassword: "Harbor12345"
-#         externalURL: https://container.wush.site
-#         exposureType: ingress
-#         ingress:
-#           core:
-#             ingressClassName: "nginx"
-#             controller: default
-#             hostname: container.wush.site
-#             annotations:
-#               ingress.kubernetes.io/proxy-body-size: "0"
-#               ingress.kubernetes.io/client-max-body-size: "0"
-#               ingress.kubernetes.io/ssl-redirect: "false"
-#               nginx.ingress.kubernetes.io/ssl-redirect: "false"
-#               nginx.ingress.kubernetes.io/proxy-body-size: "0"
-#               nginx.ingress.kubernetes.io/client-max-body-size: "0"
-#               cert-manager.io/cluster-issuer: letsencrypt-prod
-#               external-dns.alpha.kubernetes.io/hostname: container.wush.site
-#               nginx.ingress.kubernetes.io/server-snippet: |
-#                 location /.well-known/acme-challenge/ {
-#                   allow all;
-#                 }
-#             tls: false
-#         registry:
-#             relativeurls: true
-#   destination:
-#     server: 'https://kubernetes.default.svc'
-#     namespace: backend
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: harbor-new
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: harbor
+    repoURL: registry-1.docker.io/bitnamicharts
+    targetRevision: 24.3.0
+    helm:
+      valuesObject:
+        adminPassword: "Harbor12345"
+        externalURL: https://container.wush.site
+        exposureType: ingress
+        ingress:
+          core:
+            ingressClassName: "nginx"
+            controller: default
+            hostname: container.wush.site
+            annotations:
+              ingress.kubernetes.io/proxy-body-size: "0"
+              ingress.kubernetes.io/client-max-body-size: "0"
+              ingress.kubernetes.io/ssl-redirect: "false"
+              nginx.ingress.kubernetes.io/ssl-redirect: "false"
+              nginx.ingress.kubernetes.io/proxy-body-size: "0"
+              nginx.ingress.kubernetes.io/client-max-body-size: "0"
+              cert-manager.io/cluster-issuer: letsencrypt-prod
+              external-dns.alpha.kubernetes.io/hostname: container.wush.site
+              nginx.ingress.kubernetes.io/server-snippet: |
+                location /.well-known/acme-challenge/ {
+                  allow all;
+                }
+            tls: false
+        registry:
+            relativeurls: true
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: backend
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
