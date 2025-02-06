@@ -28,6 +28,23 @@ spec:
             - secretName: elasticsearch-tls
               hosts:
                 - search.wush.site
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+          limits:
+            cpu: "1000m"
+            memory: "2Gi"
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - elasticsearch
+                topologyKey: "kubernetes.io/hostname"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: backend
