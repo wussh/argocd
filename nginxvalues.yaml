@@ -3,7 +3,12 @@ controller:
   electionID: "nginx-ingress-leader-election"
   service:
     type: LoadBalancer
+  config:
+    proxy-body-size: "0"
+    client-max-body-size: "0"
+
 enableCertManager: true
 enableExternalDNS: true
+
 ingressClass:
   setAsDefaultIngress: true

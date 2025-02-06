@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: harbor-new
+  name: harbor
   namespace: argocd
 spec:
   project: default
@@ -20,12 +20,6 @@ spec:
             controller: default
             hostname: container.wush.site
             annotations:
-              ingress.kubernetes.io/proxy-body-size: "0"
-              ingress.kubernetes.io/client-max-body-size: "0"
-              ingress.kubernetes.io/ssl-redirect: "false"
-              nginx.ingress.kubernetes.io/ssl-redirect: "false"
-              nginx.ingress.kubernetes.io/proxy-body-size: "500m"
-              nginx.ingress.kubernetes.io/client-max-body-size: "500m"
               cert-manager.io/cluster-issuer: letsencrypt-prod
               external-dns.alpha.kubernetes.io/hostname: container.wush.site
               nginx.ingress.kubernetes.io/server-snippet: |
