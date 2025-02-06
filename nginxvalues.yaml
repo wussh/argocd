@@ -4,11 +4,10 @@ controller:
   service:
     type: LoadBalancer
   config:
-    proxy-body-size: "0"
-    client-max-body-size: "0"
-
+    entries:
+      proxy-body-size: "0"
+      client-max-body-size: "0"
 enableCertManager: true
 enableExternalDNS: true
-
 ingressClass:
   setAsDefaultIngress: true
