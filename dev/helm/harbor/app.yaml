@@ -25,44 +25,7 @@ spec:
             tls:
               - secretName: wildcard-wush-site-tls
                 hosts:
-                  - harbor.wush.site
-          registry:
-            ingressClassName: "nginx"
-            hostname: harbor.wush.site
-            annotations:
-              nginx.ingress.kubernetes.io/ssl-redirect: "true"
-            tls:
-              - secretName: wildcard-wush-site-tls
-                hosts:
-                  - harbor.wush.site
-          portal:
-            ingressClassName: "nginx"
-            hostname: harbor.wush.site
-            annotations:
-              nginx.ingress.kubernetes.io/ssl-redirect: "true"
-            tls:
-              - secretName: wildcard-wush-site-tls
-                hosts:
-                  - harbor.wush.site
-          jobservice:
-            ingressClassName: "nginx"
-            hostname: harbor.wush.site
-            annotations:
-              nginx.ingress.kubernetes.io/ssl-redirect: "true"
-            tls:
-              - secretName: wildcard-wush-site-tls
-                hosts:
-                  - harbor.wush.site
-          trivy:
-            ingressClassName: "nginx"
-            hostname: harbor.wush.site
-            annotations:
-              nginx.ingress.kubernetes.io/ssl-redirect: "true"
-            tls:
-              - secretName: wildcard-wush-site-tls
-                hosts:
-                  - harbor.wush.site
-
+                  - *.wush.site
         registry:
           relativeurls: true
         affinity:
