@@ -20,7 +20,6 @@ spec:
             controller: default
             hostname: harbor.wush.site
             annotations:
-              cert-manager.io/cluster-issuer: letsencrypt-prod
               external-dns.alpha.kubernetes.io/hostname: harbor.wush.site
               nginx.ingress.kubernetes.io/ssl-redirect: "true"
             tls:
