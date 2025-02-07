@@ -1,22 +1,60 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: microservice2-backend
-#   namespace: backend
-#   labels:
-#     app: microservice2-backend
-# spec:
-#   replicas: 2
-#   selector:
-#     matchLabels:
-#       app: microservice2-backend
-#   template:
-#     metadata:
-#       labels:
-#         app: microservice2-backend
-#     spec:
-#       containers:
-#       - name: nginx
-#         image: nginx:1.25-alpine
-#         ports:
-#         - containerPort: 80
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app
+  namespace: internal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-app
+  template:
+    metadata:
+      labels:
+        app: test-app
+    spec:
+      containers:
+      - name: test-app
+        image: nginx
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-app
+  namespace: internal
+spec:
+  selector:
+    app: test-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-app-ingress
+  namespace: internal
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    external-dns.alpha.kubernetes.io/hostname: test.wush.site
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - test.wush.site
+    secretName: wildcard-wush-site-tls
+  rules:
+  - host: test.wush.site
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: test-app
+            port:
+              number: 80
