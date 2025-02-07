@@ -2,6 +2,47 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
+  namespace: backend
+spec:
+  acme:
+    email: andrianta.321@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-wush-site
+  namespace: backend
+spec:
+  secretName: wildcard-wush-site-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - "*.wush.site"
+    - "wush.site"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-api-token-secret
+  namespace: backend
+type: Opaque
+data:
+  api-token: WXgyZVl3WW1CeWlNZlN0VUpWWHU5djc2QTVFYmktcTFieFNaVGxUag==
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
   namespace: internal
 spec:
   acme:

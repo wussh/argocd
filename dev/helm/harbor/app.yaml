@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: harbor-new
+  name: harbor-old
   namespace: argocd
 spec:
   project: default
@@ -12,16 +12,16 @@ spec:
     helm:
       valuesObject:
         adminPassword: "Harbor12345"
-        externalURL: https://container-new.wush.site
+        externalURL: https://harbor.wush.site
         exposureType: ingress
         ingress:
           core:
             ingressClassName: "nginx"
             controller: default
-            hostname: container-new.wush.site
+            hostname: harbor.wush.site
             annotations:
               cert-manager.io/cluster-issuer: letsencrypt-prod
-              external-dns.alpha.kubernetes.io/hostname: container-new.wush.site
+              external-dns.alpha.kubernetes.io/hostname: harbor.wush.site
               nginx.ingress.kubernetes.io/ssl-redirect: "true"
             tls:
               - secretName: wildcard-wush-site-tls
