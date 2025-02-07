@@ -32,9 +32,6 @@ spec:
         core:
           tls:
             existingSecret: wildcard-wush-site-tls
-        portal:
-          tls:
-            existingSecret: wildcard-wush-site-tls
         jobservice:
           tls:
             existingSecret: wildcard-wush-site-tls
