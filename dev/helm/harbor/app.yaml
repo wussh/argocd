@@ -25,7 +25,7 @@ spec:
             tls:
               - secretName: wildcard-wush-site-tls
                 hosts:
-                  - *.wush.site
+                  - harbor.wush.site
         registry:
           relativeurls: true
         affinity:
