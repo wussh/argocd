@@ -30,8 +30,6 @@ spec:
           enabled: true
           existingSecret: wildcard-wush-site-tls
         core:
-          secretName: wildcard-wush-site-tls
-          existingSecret: wildcard-wush-site-tls
           tls:
             existingSecret: wildcard-wush-site-tls
         portal:
