@@ -4,6 +4,11 @@ global:
 configs:
   params:
     server.insecure: true
+  cm:
+    admin.enabled: true
+    application.instanceLabelKey: argocd.argoproj.io/instance
+  secret:
+    argocdServerAdminPassword: "$2y$10$DeFHUuHjInpGt2UcuJqwaOTfR1yYybLyNFtkRUPmaTahQzYmiiPGm"
 
 server:
   ingress:
@@ -18,5 +23,21 @@ server:
       acme.cert-manager.io/http01-edit-in-place: "true"
     tls:
       - hosts:
-        - argocd.wush.site
+          - argocd.wush.site
         secretName: argocd-tls
+
+repoServer:
+  autoscale:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+    targetCPUUtilizationPercentage: 80
+
+controller:
+  resources:
+    limits:
+      cpu: 500m
+      memory: 256Mi
+    requests:
+      cpu: 250m
+      memory: 128Mi
