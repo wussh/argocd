@@ -7,6 +7,8 @@ controller:
     entries:
       proxy-body-size: "0"
       client-max-body-size: "0"
+  extraArgs:
+    default-ssl-certificate: "internal/wildcard-wush-site-tls"
 enableCertManager: true
 enableExternalDNS: true
 ingressClass:

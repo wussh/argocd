@@ -73,7 +73,7 @@ kubectl create namespace argocd
 
 Install Argo CD using Helm:
 ```bash
-helm install argocd argo/argo-cd --version 7.7.15 -f argovalues.yaml -n argocd
+helm install argocd argo/argo-cd --version 7.8.0 -f argovalues.yaml -n argocd
 ```
 
 ### argovalues.yaml
