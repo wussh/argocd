@@ -22,7 +22,7 @@ spec:
             annotations:
               external-dns.alpha.kubernetes.io/hostname: harbor.wush.site
               nginx.ingress.kubernetes.io/ssl-redirect: "true"
-            tls:
+            tls: true
               - secretName: wildcard-wush-site-tls
                 hosts:
                   - harbor.wush.site
