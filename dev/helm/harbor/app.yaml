@@ -26,21 +26,6 @@ spec:
               - hosts:
                   - harbor.wush.site
                 secretName: wildcard-wush-site-tls
-        core:
-          tls:
-            existingSecret: wildcard-wush-site-tls
-        portal:
-          tls:
-            existingSecret: wildcard-wush-site-tls
-        jobservice:
-          tls:
-            existingSecret: wildcard-wush-site-tls
-        registry:
-          tls:
-            existingSecret: wildcard-wush-site-tls
-        trivy:
-          tls:
-            existingSecret: wildcard-wush-site-tls
         affinity:
           podAntiAffinity:
             requiredDuringSchedulingIgnoredDuringExecution:
