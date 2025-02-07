@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: harbor
+  name: harborkocak
   namespace: argocd
 spec:
   project: default
@@ -12,19 +12,19 @@ spec:
     helm:
       valuesObject:
         adminPassword: "Harbor12345"
-        externalURL: https://harbor.wush.site
+        externalURL: https://harborkocak.wush.site
         exposureType: ingress
         ingress:
           core:
             ingressClassName: "nginx"
-            hostname: harbor.wush.site
+            hostname: harborkocak.wush.site
             annotations:
-              external-dns.alpha.kubernetes.io/hostname: harbor.wush.site
+              external-dns.alpha.kubernetes.io/hostname: harborkocak.wush.site
               nginx.ingress.kubernetes.io/ssl-redirect: "true"
             tls: true
             extraTls:
               - hosts:
-                  - harbor.wush.site
+                  - harborkocak.wush.site
                 secretName: wildcard-wush-site-tls
         affinity:
           podAntiAffinity:
