@@ -21,7 +21,7 @@ spec:
             annotations:
               external-dns.alpha.kubernetes.io/hostname: harbor.wush.site
               nginx.ingress.kubernetes.io/ssl-redirect: "true"
-            tls: true
+            # tls: true
             extraTls:
               - hosts:
                   - harbor.wush.site
